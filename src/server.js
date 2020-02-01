@@ -1,6 +1,10 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
+const https = require('https'),
+    fs = require('fs'),
+    join = require('path').join,
+    express = require('express'),
+    mongoose = require('mongoose'),
+    bodyParser = require('body-parser'),
+    helmet = require('helmet');
 
 //config
 require('dotenv').config();
@@ -23,10 +27,21 @@ db.once('open', function () {
     setting.init(reload).then(() => console.log(`Settings loaded`));
 });
 
-const port = process.env.PORT || 3000;
+//app
 const app = express();
+app.use(helmet());
 app.use(bodyParser.urlencoded());
 app.use(bodyParser.json());
 app.use(regionRouter);
 
-app.listen(port, () => console.log(`Server is started at port ${port}`));
+//ssl
+const options = {
+    key: fs.readFileSync(join(process.cwd(), 'ssl/cert.key')),
+    cert: fs.readFileSync(join(process.cwd(), 'ssl/cert.pem'))
+};
+
+//server
+const port = process.env.PORT || 3000;
+https
+    .createServer(options, app)
+    .listen(port, () => console.log(`Server is started at port ${port}`));
