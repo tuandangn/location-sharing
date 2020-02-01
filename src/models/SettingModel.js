@@ -3,7 +3,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 
 //setting file
-const _targetFile = path.join(process.cwd(), 'settings.json');
+const _targetFile = path.join(__dirname, 'settings.json');
 
 class SettingModel {
     constructor(file) {

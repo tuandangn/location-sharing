@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tuandangn/location_sharing.git"
+    "url": "git+https://github.com/tuandangn/location-sharing.git"
   },
   "keywords": [
     "LocationSharing"
@@ -18,9 +18,9 @@
   "author": "MrD",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/tuandangn/location_sharing/issues"
+    "url": "https://github.com/tuandangn/location-sharing/issues"
   },
-  "homepage": "https://github.com/tuandangn/location_sharing#readme",
+  "homepage": "https://github.com/tuandangn/location-sharing#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
     "chai": "^4.2.0",
